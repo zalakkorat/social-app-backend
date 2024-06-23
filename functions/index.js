@@ -34,10 +34,10 @@ mongoose
   .then(() => console.log("connected"))
   .catch((error) => console.log(error));
 
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("../routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
-const socialPostRoutes = require("./routes/socialPostRoutes");
+const socialPostRoutes = require("../routes/socialPostRoutes");
 app.use("/api/socialPost", socialPostRoutes);
 
 
