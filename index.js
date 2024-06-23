@@ -37,6 +37,10 @@ mongoose
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
+const socialPostRoutes = require("./routes/socialPostRoutes");
+app.use("/api/socialPost", socialPostRoutes);
+
+
 app.get("/", (req, res) => {
   console.log("correct");
   res.status(200).json({ message: "successful login", code: "loggedIn" });
