@@ -35,10 +35,10 @@ mongoose
   .then(() => console.log("connected"))
   .catch((error) => console.log(error));
 
-const authRoutes = require("../routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
-const socialPostRoutes = require("../routes/socialPostRoutes");
+const socialPostRoutes = require("./routes/socialPostRoutes");
 app.use("/api/socialPost", socialPostRoutes);
 
 
@@ -61,5 +61,5 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.use('/.netlify/functions/api', app.router());
-module.exports.handler = serverless(app);
+// app.use('/.netlify/functions/api', app.router());
+// module.exports.handler = serverless(app);
