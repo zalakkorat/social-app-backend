@@ -9,8 +9,8 @@ const login = async (req, res) => {
 
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -58,8 +58,8 @@ const register = async (req, res) => {
 
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -95,8 +95,8 @@ const logout = async (req, res) => {
 
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -122,8 +122,8 @@ const forgetPwd = async (req, res) => {
   const { email, newPassword } = req.body;
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -159,8 +159,8 @@ const resetPassword = async (req, res) => {
 
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -213,8 +213,8 @@ const getUser = async (req, res) => {
   const email = req.params.email;
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -241,8 +241,8 @@ const updateUser = async (req, res) => {
   const { email, userDetails } = req.body;
   res.header(
     "Access-Control-Allow-Origin",
-    "https://orders-frontend.netlify.app",
-  ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+    "http://localhost:3000",
+  ); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",

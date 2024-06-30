@@ -5,8 +5,8 @@ const createSocialPost = async (req, res) => {
     const { email, title, description, imgUrl, time, comments, likes } = req.body;
     res.header(
         "Access-Control-Allow-Origin",
-        "https://orders-frontend.netlify.app",
-    ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+        "http://localhost:3000",
+    ); // replace 'http://localhost:3000' with your frontend's URL in production
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",
@@ -52,8 +52,8 @@ const likePost = async (req, res) => {
     const {email,title} = req.body;
     res.header(
         "Access-Control-Allow-Origin",
-        "https://orders-frontend.netlify.app",
-    ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+        "http://localhost:3000",
+    ); // replace 'http://localhost:3000' with your frontend's URL in production
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",
@@ -89,8 +89,8 @@ const getPost = async (req, res) => {
     const { email, title } = req.body;
     res.header(
         "Access-Control-Allow-Origin",
-        "https://orders-frontend.netlify.app",
-    ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+        "http://localhost:3000",
+    ); // replace 'http://localhost:3000' with your frontend's URL in production
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",
@@ -126,8 +126,8 @@ const getPost = async (req, res) => {
 const getPosts = async (req, res) => {
     res.header(
         "Access-Control-Allow-Origin",
-        "https://orders-frontend.netlify.app",
-    ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+        "http://localhost:3000",
+    ); // replace 'http://localhost:3000' with your frontend's URL in production
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",
@@ -158,8 +158,8 @@ const addComment = async (req, res) => {
     const {email,title, comment, commentedBy} = req.body;
     res.header(
         "Access-Control-Allow-Origin",
-        "https://orders-frontend.netlify.app",
-    ); // replace 'https://orders-frontend.netlify.app' with your frontend's URL in production
+        "http://localhost:3000",
+    ); // replace 'http://localhost:3000' with your frontend's URL in production
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",

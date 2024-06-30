@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const serverless = require('serverless-http');
 
 const app = express();
 const PORT = 3001;
@@ -12,7 +11,7 @@ const PORT = 3001;
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: "https://orders-frontend.netlify.app",
+  origin: "http://localhost:3000",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Allow credentials (cookies, HTTP authentication) to be included
   optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -21,7 +20,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://gzpxjh.csb.app"); // Replace 'https://orders-frontend.netlify.app' with the specific origin you want to allow
+  res.header("Access-Control-Allow-Origin", "https://gzpxjh.csb.app"); // Replace 'http://localhost:3000' with the specific origin you want to allow
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("");
