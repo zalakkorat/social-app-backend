@@ -20,12 +20,12 @@ const createSocialPost = async (req, res) => {
                 .status(200)
                 .json({ message: "User Not Found", code: "userNotFound" });
         }
-        else if (postExist) {
+         if (postExist) {
             return res
                 .status(200)
                 .json({ message: "Please Provide different Title for Social Post", code: "socialPostExist" });
         }
-        else if (userExist?.code == "userExist" && !postExist) {
+        if (userExist?.code === "userExist" && !postExist) {
             await SocialPost.create({
                 title,
                 description,
@@ -86,7 +86,8 @@ const likePost = async (req, res) => {
 }
 
 const getPost = async (req, res) => {
-    const { email, title } = req.body;
+    const title = req.params.id
+    const { email} = req.body;
     res.header(
         "Access-Control-Allow-Origin",
         "http://localhost:3000",

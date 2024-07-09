@@ -107,7 +107,8 @@ const logout = async (req, res) => {
     if (userExist && userExist.isLoggedIn) {
       await User.findOneAndUpdate({ email }, { isLoggedIn: false });
       return res.status(200).json({ message: "Logged out", code: "logout" });
-    } else {
+    } 
+    if(!userExist) {
       return res
         .status(200)
         .json({ message: "user not found", code: "userNotFound" });
@@ -136,7 +137,7 @@ const forgetPwd = async (req, res) => {
       const originalText = bytes.toString(CryptoJS.enc.Utf8);
 
       //encrypt
-      const newPwd = CryptoJS.AES.encrypt(originalText, "register");
+      const newPwd = CryptoJS.AES.encrypt(originalText, "register").toString();
 
       await User.findOneAndUpdate({ email }, { password: newPwd });
       return res
