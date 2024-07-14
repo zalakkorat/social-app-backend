@@ -6,6 +6,7 @@ router.post("/createSocialPost", socialPostController.createSocialPost);
 router.post("/like", socialPostController.likePost);
 router.get("/:postId", socialPostController.getPost);
 router.get("/", socialPostController.getPosts);
-router.post("/comment", socialPostController.addComment)
+router.post("/comment", socialPostController.addComment);
+router.delete("/delete", socialPostController.deletePost);
 
 module.exports = router;
