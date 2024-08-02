@@ -21,19 +21,12 @@ const login = async (req, res) => {
       const originalPassword = userBytes.toString(CryptoJS.enc.Utf8);
 
       if (originalPassword === originalText) {
-        if (!userExist.isLoggedIn) {
-          await User.findOneAndUpdate({ email }, { isLoggedIn: true });
-          return res.status(200).json({
-            message: "successful login",
-            code: "loggedIn",
-            user: userExist,
-          });
-        }
-        if (userExist.isLoggedIn) {
-          return res
-            .status(200)
-            .json({ message: "Already loggedIn", code: "alreadyLoggedIn" });
-        }
+        await User.findOneAndUpdate({ email }, { isLoggedIn: true });
+        return res.status(200).json({
+          message: "successful login",
+          code: "loggedIn",
+          user: userExist,
+        });
       } else {
         return res
           .status(200)
@@ -54,10 +47,7 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   const { firstName, lastName, email, password, phoneNumber } = req.body;
 
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -91,10 +81,7 @@ const register = async (req, res) => {
 const logout = async (req, res) => {
   const { email } = req.body;
 
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -105,8 +92,8 @@ const logout = async (req, res) => {
     if (userExist && userExist.isLoggedIn) {
       await User.findOneAndUpdate({ email }, { isLoggedIn: false });
       return res.status(200).json({ message: "Logged out", code: "logout" });
-    } 
-    if(!userExist) {
+    }
+    if (!userExist) {
       return res
         .status(200)
         .json({ message: "user not found", code: "userNotFound" });
@@ -119,10 +106,7 @@ const logout = async (req, res) => {
 
 const forgetPwd = async (req, res) => {
   const { email, newPassword } = req.body;
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -156,10 +140,7 @@ const forgetPwd = async (req, res) => {
 const resetPassword = async (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -210,10 +191,7 @@ const resetPassword = async (req, res) => {
 
 const getUser = async (req, res) => {
   const email = req.params.email;
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -238,10 +216,7 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const { email, userDetails } = req.body;
-  res.header(
-    "Access-Control-Allow-Origin",
-    "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // replace 'http://localhost:3000' with your frontend's URL in production
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
