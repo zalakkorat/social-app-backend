@@ -3,14 +3,13 @@ const CryptoJS = require("crypto-js");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-  // decrypt user entered password
   const bytes = CryptoJS.AES.decrypt(password, "login");
   const originalText = bytes.toString(CryptoJS.enc.Utf8);
 
   res.header(
     "Access-Control-Allow-Origin",
     "http://localhost:3000",
-  ); // replace 'http://localhost:3000' with your frontend's URL in production
+  ); 
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
@@ -18,7 +17,6 @@ const login = async (req, res) => {
   try {
     const userExist = await User.findOne({ email });
     if (userExist) {
-      // decrypt database user password
       const userBytes = CryptoJS.AES.decrypt(userExist.password, "register");
       const originalPassword = userBytes.toString(CryptoJS.enc.Utf8);
 

@@ -6,7 +6,7 @@ const createSocialPost = async (req, res) => {
     res.header(
         "Access-Control-Allow-Origin",
         "http://localhost:3000",
-    ); // replace 'http://localhost:3000' with your frontend's URL in production
+    ); 
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept",
@@ -14,6 +14,7 @@ const createSocialPost = async (req, res) => {
 
     try {
         const userExist = await axios.get(`http://localhost:3001/api/auth/${email}`).then(res => res.data);
+        console.log(userExist, "check")
         const postExist = await SocialPost.findOne({ email, title });
         if (userExist?.code === "userNotFound") {
             return res
@@ -49,7 +50,7 @@ const createSocialPost = async (req, res) => {
 }
 
 const likePost = async (req, res) => { 
-    const {email,title} = req.body;
+    const {email,title, like, likeBy} = req.body;
     res.header(
         "Access-Control-Allow-Origin",
         "http://localhost:3000",
@@ -73,10 +74,23 @@ const likePost = async (req, res) => {
                 .json({ message: "Social Post Not Found", code: "socialPostNotExist" });
         }
         else if (postExist) {
-            await SocialPost.findOneAndUpdate({email,title},{likes: Number(postExist.likes)+1})
+            const likeCheck = postExist.likes && postExist.likes.filter((item) => item.likeBy === likeBy);
+            let likesCopy = [...postExist.likes]
+            if(likeCheck){
+              likesCopy = likesCopy.map((item) => {
+                if(item.likeBy === likeBy ){
+                    return {like, likeBy};
+                }
+                return item;
+              })
+            }
+            if(!likeCheck){
+                likesCopy = [...likesCopy, {like, likeBy}];
+            }
+            await SocialPost.findOneAndUpdate({email,title},{likes: likesCopy})
             return res
                 .status(200)
-                .json({ message: "Social Post Liked", code: "socialPostExist", likes: Number(postExist.likes)+1 });
+                .json({ message: "Social Post Liked", code: "socialPostLiked", likes: likesCopy });
         }
     }
     catch(error){

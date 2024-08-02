@@ -7,7 +7,7 @@ const socialPostSchema = new mongoose.Schema({
     imgUrl: String,
     time: Date,
     comments: [{ type: { comment: String, commentBy: String } }],
-    likes: Number
+    likes: [{type: {like: Boolean, likeBy: String}}]
 });
 
 module.exports = mongoose.model("SocialPost", socialPostSchema);
