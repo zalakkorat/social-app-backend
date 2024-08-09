@@ -94,23 +94,28 @@ const likePost = async (req, res) => {
                 .json({ message: "Social Post Not Found", code: "socialPostNotExist" });
         }
         else if (postExist) {
-            const likeCheck = postExist.likes && postExist.likes.filter((item) => item.likeBy === likeBy);
-            let likesCopy = [...postExist.likes]
-            if(likeCheck){
-              likesCopy = likesCopy.map((item) => {
-                if(item.likeBy === likeBy ){
-                    return {like, likeBy};
-                }
-                return item;
-              })
-            }
-            if(!likeCheck){
-                likesCopy = [...likesCopy, {like, likeBy}];
-            }
-            await SocialPost.findOneAndUpdate({email,title},{likes: likesCopy})
+          let data = postExist.likes.length && [...postExist.likes];
+         let checkEmail = false;
+         data.forEach((item) => {
+          if(item.likeBy === likeBy)
+            checkEmail = true;
+        })
+
+        if(!checkEmail && data){
+          data = [...data, {like, likeBy}]
+        }
+        if(!checkEmail && !data)data = [{like, likeBy}]
+        else {
+          data = data.map(item => {
+            if(item.likeBy === likeBy)return {like, likeBy};
+            else return item;
+          })
+        }
+            console.log(like, likeBy, data);
+            await SocialPost.findOneAndUpdate({email,title},{likes: data})
             return res
                 .status(200)
-                .json({ message: "Social Post Liked", code: "socialPostLiked", likes: likesCopy });
+                .json({ message: "Social Post Liked", code: "socialPostLiked", likes: data });
         }
     }
    catch (error) {
