@@ -2,6 +2,25 @@ user name = gxdkspvKTIcHpvp5
 password = gxdkspvKTIcHpvp5
 connection url = mongodb+srv://zalakkorat:gxdkspvKTIcHpvp5@cluster0.nwhks7l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: "smtp.gmail.com",
+  port: "465",
+  secure: SSL,
+  auth: {
+    user:"poojashiroya99@gmail.com",
+    pass: "ceklxfdzzbudeuyw"
+  }
+})
+const mailOptions = {
+  from: {
+    name: "Pooja",
+    address: "poojashiroya99@gmail.com"
+  },
+  to: "poojapatel@gmail.com",
+  subject: "check",
+  text: "Hello"
+}
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://zalakkorat:gxdkspvKTIcHpvp5@cluster0.nwhks7l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
