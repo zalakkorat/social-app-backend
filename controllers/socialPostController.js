@@ -22,7 +22,7 @@ const sendEmail = async (email) => {
       },
       to: "ruchika842ar@gmail.com",
       subject: "Email Verification",
-      html: `<h3>Hi Admin, you have receievd a request. Could you please verfy the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="http://localhost:3000/verify?email=${email}">Verify Email</a></p>`,
+      html: `<h3>Hi Admin, you have receievd a request. Could you please verify the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="http://localhost:3000/verify/${email}">Verify Email</a></p>`,
     };
 
     const sendMail = await transporter.sendMail(mailOptions);
@@ -251,7 +251,7 @@ const addComment = async (req, res) => {
       await SocialPost.findOneAndUpdate({ email, title }, { comments });
       return res.status(200).json({
         message: "Social Post commented",
-        code: "socialPostExist",
+        code: "socialPostCommented",
         comments,
       });
     }
