@@ -8,5 +8,6 @@ router.get("/:postId", socialPostController.getPost);
 router.get("/", socialPostController.getPosts);
 router.post("/comment", socialPostController.addComment);
 router.delete("/delete", socialPostController.deletePost);
+router.post("/verifyPost", socialPostController.verifyEmailAndCreatePost);
 
 module.exports = router;
