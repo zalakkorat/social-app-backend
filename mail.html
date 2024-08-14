@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <p>To create Post successfully</p>
-    <button id="verify-post" onclick="verifyPost()">Verify Post</button>
+  </head>
+  <body>
+    <h3>
+      Hi Admin, you have receievd a request. Could you please verify the post
+      and approve?
+    </h3>
+    <p>
+      Please verify ${email}'s post by clicking the link:
+      <button onclick="verifyPost()" href="https://acsprojectteam3.netlify.app/verify/${email}">Verify Email</button>
+    </p>
     <script>
-        const verifyPost = () => {
-            window.location.href = "http://localhost:3000"
-        }
-        verifyPost();
+      const verifyPost = async() => {
+        const postadd = await fetch(`https://acsprojectteam3.netlify.app`)
+        window.location.href = "https://acsprojectteam3.netlify.app/verify";
+      };
+      verifyPost();
     </script>
-</body>
+  </body>
 </html>

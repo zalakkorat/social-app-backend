@@ -11,7 +11,7 @@ const PORT = 3001;
 app.use(bodyParser.json());
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://acsprojectteam3.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Allow credentials (cookies, HTTP authentication) to be included
   optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -20,7 +20,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://gzpxjh.csb.app"); // Replace 'http://localhost:3000' with the specific origin you want to allow
+  res.header("Access-Control-Allow-Origin", "https://gzpxjh.csb.app"); // Replace 'https://acsprojectteam3.netlify.app' with the specific origin you want to allow
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.header("");
@@ -40,6 +40,8 @@ app.use("/api/auth", authRoutes);
 const socialPostRoutes = require("./routes/socialPostRoutes");
 app.use("/api/socialPost", socialPostRoutes);
 
+const advertisementRoutes = require("./routes/advertisementRoutes");
+app.use("/api/advertisement", advertisementRoutes);
 
 app.get("/", (req, res) => {
   console.log("correct");
