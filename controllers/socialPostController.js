@@ -26,7 +26,7 @@ const sendEmail = async (email, post) => {
       },
       to: "poojashiroya99@gmail.com",
       subject: "Email Verification",
-      html: `<h3>Hi Admin, you have receievd a request. Could you please verify the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="https://acsprojectteam3.netlify.app/verify?email=${encodedEmail}&title=${title}&description=${description}&img=${imgUrl}">Verify Email</a></p>`,
+      html: `<h3>Hi Admin, you have receievd a request. Could you please verify the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="https://acsprojectteam3.netlify.app/verify/${encodedEmail}/${title}/${description}/${imgUrl}">Verify Email</a></p>`,
     };
 
     const sendMail = await transporter.sendMail(mailOptions);
