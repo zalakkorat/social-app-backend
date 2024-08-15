@@ -33,6 +33,7 @@ const sendEmail = async (email, post) => {
     return sendMail;
   } catch (error) {
     console.log(error, "error");
+    return res.status(500).json({ message: "Internal Server Error", code: "error" });
   }
 };
 
@@ -78,7 +79,7 @@ const createSocialPost = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -135,7 +136,7 @@ const verifyEmailAndCreatePost = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -190,6 +191,7 @@ const likePost = async (req, res) => {
     }
   } catch (error) {
     console.log("error", error);
+    return res.status(500).json({ message: "Internal Server Error", code: "error" });
   }
 };
 
@@ -225,7 +227,7 @@ const getPost = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -253,7 +255,7 @@ const getPosts = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -290,6 +292,7 @@ const addComment = async (req, res) => {
     }
   } catch (error) {
     console.log("error", error);
+    return res.status(500).json({ message: "Internal Server Error", code: "error" });
   }
 };
 
@@ -323,6 +326,7 @@ const deletePost = async (req, res) => {
     }
   } catch (error) {
     console.log("error", error);
+    return res.status(500).json({ message: "Internal Server Error", code: "error" });
   }
 };
 

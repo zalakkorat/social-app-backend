@@ -40,7 +40,8 @@ const createAdvertisement = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
+    console.error("Error:", error);
+    return res.status(500).json({ message: "Internal Server Error", code: "error" });  
   }
 };
 
@@ -70,7 +71,7 @@ const getAdvertisements = async (req, res) => {
   } catch (error) {
     console.log("error", error);
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };

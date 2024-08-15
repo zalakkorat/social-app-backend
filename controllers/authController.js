@@ -39,7 +39,7 @@ const login = async (req, res) => {
     }
   } catch (error) {
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -74,7 +74,7 @@ const register = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "Internal Error", code: "error" });
+    return res.status(500).json({ message: "Internal Error", code: "error" });
   }
 };
 
@@ -100,7 +100,7 @@ const logout = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "Internal Error", code: "error" });
+    return res.status(500).json({ message: "Internal Error", code: "error" });
   }
 };
 
@@ -132,7 +132,7 @@ const forgetPwd = async (req, res) => {
     }
   } catch (error) {
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -184,7 +184,7 @@ const resetPassword = async (req, res) => {
     }
   } catch (error) {
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -209,7 +209,7 @@ const getUser = async (req, res) => {
     }
   } catch (error) {
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
@@ -237,7 +237,7 @@ const updateUser = async (req, res) => {
     }
   } catch (error) {
     return res
-      .status(401)
+      .status(500)
       .json({ message: "Invalid credentials", code: "error" });
   }
 };
