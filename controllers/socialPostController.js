@@ -10,8 +10,8 @@ const sendEmail = async (email, post) => {
       port: 465,
       secure: true, // Use SSL
       auth: {
-        user: "poojashiroya99@gmail.com", // Add your email to environment variables
-        pass: "bkunfqfyboaiadkg", // Add your email password to environment variables
+        user: "ruchikaarora248@gmail.com", // Add your email to environment variables
+        pass: "hlcrsqchhiewfmvr", // Add your email password to environment variables
       },
     });
     const encodedEmail = encodeURIComponent(email)
@@ -21,12 +21,12 @@ const sendEmail = async (email, post) => {
 
     const mailOptions = {
       from: {
-        name: "Pooja",
-        address: "poojashiroya99@gmail.com",
+        name: "Ruchika",
+        address: "ruchikaarora248@gmail.com",
       },
-      to: "poojashiroya99@gmail.com",
+      to:"ruchikaarora248@gmail.com",
       subject: "Email Verification",
-      html: `<h3>Hi Admin, you have receievd a request. Could you please verify the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="https://acsprojectteam3.netlify.app/verify/${encodedEmail}/${title}/${description}/${imgUrl}">Verify Email</a></p>`,
+      html: `<h3>Hi Admin, you have receievd a request. Could you please verify the post and approve?</h3><p>Please verify ${email}'s post by clicking the link: <a href="https://acsprojectteam3.netlify.app/verify?email=${encodedEmail}&title=${title}&description=${description}&img=${imgUrl}">Verify Email</a></p>`,
     };
 
     const sendMail = await transporter.sendMail(mailOptions);
@@ -318,6 +318,7 @@ const deletePost = async (req, res) => {
         .status(400)
         .json({ message: "Social Post Not Found", code: "socialPostNotExist" });
     } else if (postExist) {
+
       await SocialPost.findOneAndDelete({ email, title });
       return res.status(200).json({
         message: "Social Post deleted",
